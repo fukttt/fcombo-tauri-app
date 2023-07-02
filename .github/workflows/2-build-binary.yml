@@ -1,6 +1,9 @@
-name: 'publish'
+name: 'build-binary'
 
-on: push
+on:
+  push:
+    branches:
+      - release
 
 jobs:
   create-release:
