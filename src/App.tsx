@@ -1,51 +1,49 @@
 import { useState } from "react";
 import reactLogo from "./assets/react.svg";
 import { invoke } from "@tauri-apps/api/tauri";
-import "./App.css";
+import { NavigateCircleOutline, CogOutline, PersonCircleOutline } from 'react-ionicons'
+import "./styles.css";
 
 function App() {
-  const [greetMsg, setGreetMsg] = useState("");
-  const [name, setName] = useState("");
 
-  async function greet() {
-    // Learn more about Tauri commands at https://tauri.app/v1/guides/features/command
-    setGreetMsg(await invoke("greet", { name }));
-  }
+  // async function greet() {
+  //   // Learn more about Tauri commands at https://tauri.app/v1/guides/features/command
+  //   setGreetMsg(await invoke("greet", { name }));
+  // }
 
   return (
-    <div className="container">
-      <h1>Welcome to Tauri!</h1>
+    <div className="w-full ">
+      <div className="grid grid-cols-12 gap-2 ">
+        <div className="p-4 col-span-3 flex">
+          <h1 className=" font-bold m-auto text-xl text-zinc-100 underline underline-offset-8">FCOMBO</h1>
+        </div>
+        <div className="p-4  col-span-7  flex">
+          <input className="border-2 rounded-md border-slate-500 p-2 w-full m-auto  focus:p-3 ease-in duration-300 focus:bg-slate-300" maxLength={30} placeholder="Поиск" />
 
-      <div className="row">
-        <a href="https://vitejs.dev" target="_blank">
-          <img src="/vite.svg" className="logo vite" alt="Vite logo" />
-        </a>
-        <a href="https://tauri.app" target="_blank">
-          <img src="/tauri.svg" className="logo tauri" alt="Tauri logo" />
-        </a>
-        <a href="https://reactjs.org" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+        </div>
+        <div className="p-4 col-span-2 flex items-center gap-2">
+          <PersonCircleOutline
+            color={'#fff'}
+            height="25px"
+            width="25px"
+            cssClasses={"cursor-pointer "}
+          />
+
+          <CogOutline
+            color={'#fff'}
+            height="25px"
+            width="25px"
+            cssClasses={"cursor-pointer "}
+          />
+          <NavigateCircleOutline
+            color={'#fff'}
+            height="25px"
+            width="25px"
+            cssClasses={"cursor-pointer "}
+            onClick={() => alert('Hi!')}
+          />
+        </div>
       </div>
-
-      <p>Click on the Tauri, Vite, and React logos to learn more.</p>
-
-      <form
-        className="row"
-        onSubmit={(e) => {
-          e.preventDefault();
-          greet();
-        }}
-      >
-        <input
-          id="greet-input"
-          onChange={(e) => setName(e.currentTarget.value)}
-          placeholder="Enter a name..."
-        />
-        <button type="submit">Greet</button>
-      </form>
-
-      <p>{greetMsg}</p>
     </div>
   );
 }
