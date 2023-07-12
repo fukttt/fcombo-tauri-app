@@ -31,7 +31,7 @@ jobs:
               repo: context.repo.repo,
               tag_name: `app-v${process.env.PACKAGE_VERSION}`,
               name: `Desktop App v${process.env.PACKAGE_VERSION}`,
-              body: 'Take a look at the assets to download and install this app.',
+              body: 'Выпилилась новая версия, прошу ознакомиться.',
               draft: true,
               prerelease: false
             })
@@ -44,7 +44,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        platform: [macos-latest, ubuntu-20.04, windows-latest]
+        platform: [ ubuntu-20.04, windows-latest] # macos-latest deprecated needs to be certificated
 
     runs-on: ${{ matrix.platform }}
     steps:

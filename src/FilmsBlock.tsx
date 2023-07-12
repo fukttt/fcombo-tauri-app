@@ -17,23 +17,19 @@ function FilmsBlock({ data }: any) {
 
     return (
         <div className="grid grid-cols-12">
-            <div className="col-span-2">
-                MENU
-            </div>
-            <div className="col-span-10">
-                <div className="grid grid-cols-12">
-                    {
-                        data.map((element: Film) => (
-                            <div className="p-4 col-span-3 flex flex-col gap-2" key={element.id}>
-                                <img className="rounded drop-shadow-md transition ease-in duration-300 hover:scale-105 cursor-pointer" src={element.posterUrl} />
-                                <h1 className="text-slate-200">{element.primaryTitle} ({element.year})</h1>
-                            </div>
-                        ))
-                    }
-                </div>
-            </div>
 
-        </div>
+            {
+                data.map((element: Film) => (
+
+                    <div className="p-4 col-span-3 flex flex-col gap-2" key={element.id}>
+                        <a href={"/player/" + element.id}><img className="rounded shadow-lg transition ease-in  delay-150 hover:-translate-y-1 duration-300 cursor-pointer" src={element.posterUrl} /></a>
+                        <h1 className="text-slate-200">{element.primaryTitle} ({element.year})</h1>
+                    </div>
+
+                ))
+            }
+
+        </div >
     );
 }
 
